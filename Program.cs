@@ -18,6 +18,7 @@ builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddAbstractFactory<ISample1, Sample1>();
 builder.Services.AddAbstractFactory<ISample2, Sample2>();
 builder.Services.AddGenericClassWithDataFactory();
+builder.Services.AddVehicleFactory();
 
 //
 

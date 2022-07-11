@@ -4,11 +4,13 @@
 @inject IAbstractFactory<ISample1> factory
 @inject IAbstractFactory<ISample2> sample2Factory
 @inject IUserDataFactory userDataFactory
+@inject IVehicleFactory vehicleFactory
 
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello @user?.Name</h1>
+<h1>Hello @user?.Name (who drives a @vehicle?.VehicleType)</h1>
+<h2>@vehicle?.Start()</h2>
 <h2>@currentTime?.CurrentDateTime</h2>
 <h3>Random value is @randomValue?.RandomValue</h3>
 
@@ -18,10 +20,12 @@
     ISample1? currentTime;
     ISample2? randomValue;
     IUserData? user;
+    IVehicle? vehicle;
 
     protected override void OnInitialized()
     {
         user = userDataFactory.Create("Muffin");
+        vehicle = vehicleFactory.Create("Van");
     }
 
     private void GetNewTime()
