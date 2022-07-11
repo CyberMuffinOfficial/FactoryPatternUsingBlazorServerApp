@@ -17,6 +17,7 @@ builder.Services.AddSingleton<WeatherForecastService>();
 //builder.Services.AddSingleton<Func<ISample1>>(x => () => x.GetService<ISample1>()!); // simplest implementation of a factory - ! means its not gonna be null
 builder.Services.AddAbstractFactory<ISample1, Sample1>();
 builder.Services.AddAbstractFactory<ISample2, Sample2>();
+builder.Services.AddGenericClassWithDataFactory();
 
 //
 
