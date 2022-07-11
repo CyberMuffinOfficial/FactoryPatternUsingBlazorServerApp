@@ -2,6 +2,7 @@ using FactoryPatternUsingBlazorServerApp.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using FactoryPatternUsingBlazorServerApp.Samples;
+using FactoryPatternUsingBlazorServerApp.Factories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +13,10 @@ builder.Services.AddSingleton<WeatherForecastService>();
 
 // FACTORY PATTERN STUFF HERE
 
-builder.Services.AddTransient<ISample1, Sample1>();
-builder.Services.AddSingleton<Func<ISample1>>(x => () => x.GetService<ISample1>()!); // simplest implementation of a factory - ! means its not gonna be null
+//builder.Services.AddTransient<ISample1, Sample1>();
+//builder.Services.AddSingleton<Func<ISample1>>(x => () => x.GetService<ISample1>()!); // simplest implementation of a factory - ! means its not gonna be null
+builder.Services.AddAbstractFactory<ISample1, Sample1>();
+builder.Services.AddAbstractFactory<ISample2, Sample2>();
 
 //
 

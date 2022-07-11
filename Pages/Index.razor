@@ -1,20 +1,27 @@
 ﻿@page "/"
 @*@inject ISample1 sample*@
-@inject Func<ISample1> factory
+@*@inject Func<ISample1> factory*@
+@inject IAbstractFactory<ISample1> factory
+@inject IAbstractFactory<ISample2> sample2Factory
+
 
 <PageTitle>Index</PageTitle>
 
 <h1>Hello, world!</h1>
 <h2>@currentTime?.CurrentDateTime</h2>
+<h3>Random value is @randomValue?.RandomValue</h3>
 
 <button class="btn btn-primary" @onclick="GetNewTime">Get New Time</button>
 
 @code{
     ISample1 currentTime;
+    ISample2 randomValue;
 
     private void GetNewTime()
     {
         //currentTime = sample;
-        currentTime = factory();
+        //currentTime = factory();
+        currentTime = factory.Create();
+        randomValue = sample2Factory.Create();
     }
 }
