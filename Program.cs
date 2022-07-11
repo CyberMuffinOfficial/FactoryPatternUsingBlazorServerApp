@@ -13,6 +13,7 @@ builder.Services.AddSingleton<WeatherForecastService>();
 // FACTORY PATTERN STUFF HERE
 
 builder.Services.AddTransient<ISample1, Sample1>();
+builder.Services.AddSingleton<Func<ISample1>>(x => () => x.GetService<ISample1>()!); // simplest implementation of a factory - ! means its not gonna be null
 
 //
 
